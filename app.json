@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Sunlogy",
-    "slug": "sunlogy",
+    "name": "Sunscreen Usage Calculator",
+    "slug": "sunscreen-usage-calculator",
     "scheme": "sunlogy",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,6 +12,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.sunlogy.usagecalculator",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#083b66",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -22,6 +24,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1d616ff5-c351-47c6-9c53-da44ac3cfeef"
+      }
     }
   }
 }
