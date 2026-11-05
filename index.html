@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunlogy Sunscreen Quantity Calculator</title>
+<style>
+:root{--navy:#083b66;--blue:#116d9a;--cyan:#21a7c7;--orange:#f47a12;--green:#08603f;--ink:#182433;--muted:#64748b;--line:#d7e2ea;--pale:#f5fafc;--gold:#f0b429}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f8fb;color:var(--ink)}
+header{background:white;border-bottom:1px solid var(--line)}.top{max-width:1120px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-size:31px;font-weight:900;color:var(--orange);letter-spacing:-1.2px}.tag{font-size:12px;color:#64748b}
+.badge{font-size:12px;font-weight:800;color:var(--green);background:#edf8f2;padding:8px 12px;border-radius:999px}
+.hero{background:linear-gradient(120deg,#fff 0%,#fff8ed 68%,#edf8f3);border-bottom:1px solid var(--line)}.heroin{max-width:1120px;margin:auto;padding:38px 22px}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:1.4px;color:var(--green);text-transform:uppercase}h1{font-size:42px;line-height:1.06;margin:8px 0;color:var(--navy)}.hero p{max-width:760px;color:#536273;font-size:17px;line-height:1.55}
+main{max-width:1120px;margin:auto;padding:24px 22px 55px}.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:20px;align-items:start}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:22px}.panel h2{margin:0 0 17px;color:var(--navy);font-size:20px}
+.inputs{display:grid;grid-template-columns:1fr 1fr;gap:13px}label.small{font-size:12px;font-weight:800;color:#526071;display:block;margin-bottom:6px}
+input[type=number]{width:100%;padding:13px;border:1px solid #cbd8e2;border-radius:11px;font-size:17px}.regions{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:15px}
+.region{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);padding:12px;border-radius:12px;background:#fbfdfe}.region input{margin-top:3px;transform:scale(1.15)}.region b{color:var(--navy)}.region small{display:block;color:var(--muted);margin-top:3px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}button{border:0;border-radius:11px;padding:12px 16px;font-weight:850;cursor:pointer}.primary{background:var(--navy);color:white}.secondary{background:#eef4f7;color:var(--navy)}
+.result{background:linear-gradient(145deg,#083b66,#0c5b85);color:white;border-radius:18px;padding:22px}.result h2{margin:0 0 4px}.sub{opacity:.78;font-size:13px}
+.big{font-size:48px;font-weight:900;letter-spacing:-1.5px;margin:19px 0 4px}.unit{font-size:16px;opacity:.82}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.metric{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:13px}.metric span{display:block;font-size:12px;opacity:.75}.metric b{display:block;font-size:21px;margin-top:3px}
+.breakdown{margin-top:15px;background:white;color:var(--ink);border-radius:13px;padding:13px}.row{display:flex;justify-content:space-between;gap:15px;padding:8px 0;border-bottom:1px solid #edf1f4}.row:last-child{border:0}.row b{color:var(--navy)}
+.method{margin-top:20px}.method h2{color:var(--navy)}.formula{background:#eef7fa;border-left:5px solid var(--cyan);padding:14px 16px;border-radius:10px;line-height:1.6}
+.refs{font-size:13px;color:#596879;line-height:1.55}.warn{margin-top:14px;background:#fff8e8;border:1px solid #f4d68a;padding:13px;border-radius:11px;font-size:13px;line-height:1.5}
+footer{background:#075c3e;color:white;text-align:center;padding:18px;font-size:13px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.inputs,.regions{grid-template-columns:1fr}h1{font-size:34px}.big{font-size:42px}}
+</style></head>
+<body>
+<header><div class="top"><div><div class="brand">sunlogy</div><div class="tag">Science Behind Sun</div></div><div class="badge">Educational calculator</div></div></header>
+<section class="hero"><div class="heroin"><div class="eyebrow">Personalized application estimate</div><h1>Sunscreen Quantity Calculator</h1><p>Estimate the amount of sunscreen required to reach the 2 mg/cm² application density used in SPF testing, personalized from height, weight and the skin areas you plan to cover.</p></div></section>
+<main>
+<div class="layout">
+<section class="panel">
+<h2>1. Enter body measurements</h2>
+<div class="inputs"><div><label class="small" for="height">Height (cm)</label><input id="height" type="number" min="80" max="230" step="0.1" value="170"></div><div><label class="small" for="weight">Weight (kg)</label><input id="weight" type="number" min="15" max="250" step="0.1" value="70"></div></div>
+<h2 style="margin-top:23px">2. Select areas to cover</h2>
+<div class="regions">
+<label class="region"><input type="checkbox" data-region="face" checked><span><b>Face</b><small>3.5% of estimated BSA</small></span></label>
+<label class="region"><input type="checkbox" data-region="neck" checked><span><b>Neck</b><small>Front + back: 2.5%</small></span></label>
+<label class="region"><input type="checkbox" data-region="hands"><span><b>Hands</b><small>Both hands: 3%</small></span></label>
+<label class="region"><input type="checkbox" data-region="arms"><span><b>Arms</b><small>Both arms: 14%</small></span></label>
+<label class="region"><input type="checkbox" data-region="legs"><span><b>Legs</b><small>Both legs + instep: 38.5%</small></span></label>
+<label class="region"><input type="checkbox" data-region="front"><span><b>Front torso</b><small>Approx. 11.5%</small></span></label>
+<label class="region"><input type="checkbox" data-region="back"><span><b>Back torso</b><small>Approx. 13%</small></span></label>
+<label class="region"><input type="checkbox" data-region="full"><span><b>Full body</b><small>100% estimated BSA</small></span></label>
+</div>
+<div class="controls"><button class="primary" id="calc">Calculate quantity</button><button class="secondary" id="reset">Reset</button></div>
+<div class="warn">This is an estimated educational quantity, not an exact medical dose. Body-region percentages are population-based anatomical estimates. Clothing, body proportions, hair/scalp coverage and the actual exposed skin area can change the amount needed.</div>
+</section>
+<aside class="result" aria-live="polite">
+<h2>Your sunscreen estimate</h2><div class="sub">At 2 mg/cm² • selected exposed areas</div>
+<div class="big" id="perUse">2.08 g</div><div class="unit">per application</div>
+<div class="metrics">
+<div class="metric"><span>Twice daily</span><b id="perDay">4.16 g</b></div>
+<div class="metric"><span>30 days</span><b id="perMonth">124.8 g</b></div>
+<div class="metric"><span>Estimated BSA</span><b id="bsa">1.82 m²</b></div>
+<div class="metric"><span>Selected skin</span><b id="coverage">6.0%</b></div>
+</div>
+<div class="breakdown"><b>Area breakdown</b><div id="breakdown"></div></div>
+</aside>
+</div>
+<section class="panel method">
+<h2>Scientific method</h2>
+<div class="formula"><b>Mosteller BSA:</b> √[(height cm × weight kg) / 3600]<br><b>Selected skin area:</b> BSA × 10,000 × body-region fraction<br><b>Sunscreen:</b> selected area × 2 mg/cm²</div>
+<p class="refs"><b>Scientific basis:</b> 2 mg/cm² is the standard application density used in SPF testing. Adult regional surface-area fractions in this calculator are based primarily on the anatomical model used in published sunscreen-application research: face 3.5%, front neck 1.5%, back neck 1%, arms 14%, hands 3%, and legs including thighs/lower legs/instep 38.5%. Full body uses 100% of estimated BSA. For torso estimates, adult values from the same published regional model are used approximately.</p>
+<p class="refs"><b>Planning outputs:</b> “Twice daily” is exactly 2 applications/day. “30 days” = per-application quantity × 2 × 30. The calculator reports mass in grams; it does not assume grams equal millilitres because product density varies.</p>
+</section>
+</main><footer>Sunlogy International • Science Behind Sun • Sunscreen Quantity Calculator</footer>
+<script>
+const R={"face": {"label": "Face", "fraction": 0.035, "note": "3.5% of BSA"}, "neck": {"label": "Neck", "fraction": 0.025, "note": "Front 1.5% + back 1.0%"}, "hands": {"label": "Hands", "fraction": 0.03, "note": "Both hands, 3% of BSA"}, "arms": {"label": "Arms", "fraction": 0.14, "note": "Both arms, excluding hands"}, "legs": {"label": "Legs", "fraction": 0.385, "note": "Thighs + lower legs + instep"}, "front": {"label": "Front torso", "fraction": 0.115, "note": "Approx. 11.5% adult BSA"}, "back": {"label": "Back torso", "fraction": 0.13, "note": "Approx. 13% adult BSA"}, "full": {"label": "Full body", "fraction": 1.0, "note": "100% estimated BSA"}};
+const H=document.getElementById('height'),W=document.getElementById('weight');
+function selected(){
+ const full=document.querySelector('[data-region="full"]');
+ if(full.checked) return ['full'];
+ return [...document.querySelectorAll('[data-region]:checked')].map(x=>x.dataset.region).filter(x=>x!=='full');
+}
+function calculate(){
+ let h=parseFloat(H.value),w=parseFloat(W.value);
+ if(!Number.isFinite(h)||!Number.isFinite(w)||h<80||h>230||w<15||w>250){alert('Please enter height 80–230 cm and weight 15–250 kg.');return;}
+ let s=selected(); if(!s.length){alert('Please select at least one body area.');return;}
+ let bsa=Math.sqrt(h*w/3600), frac=s.reduce((a,k)=>a+R[k].fraction,0); frac=Math.min(frac,1);
+ let grams=bsa*10000*frac*2/1000;
+ document.getElementById('perUse').textContent=grams.toFixed(2)+' g';
+ document.getElementById('perDay').textContent=(grams*2).toFixed(2)+' g';
+ document.getElementById('perMonth').textContent=(grams*60).toFixed(1)+' g';
+ document.getElementById('bsa').textContent=bsa.toFixed(2)+' m²';
+ document.getElementById('coverage').textContent=(frac*100).toFixed(1)+'%';
+ document.getElementById('breakdown').innerHTML=s.map(k=>{let g=bsa*10000*R[k].fraction*2/1000;return `<div class="row"><span>${R[k].label}</span><b>${g.toFixed(2)} g</b></div>`}).join('');
+}
+document.getElementById('calc').addEventListener('click',calculate);
+document.getElementById('reset').addEventListener('click',()=>{H.value=170;W.value=70;document.querySelectorAll('[data-region]').forEach(x=>x.checked=['face','neck'].includes(x.dataset.region));calculate();});
+document.querySelector('[data-region="full"]').addEventListener('change',e=>{if(e.target.checked)document.querySelectorAll('[data-region]').forEach(x=>{if(x!==e.target)x.checked=false});});
+document.querySelectorAll('[data-region]:not([data-region="full"])').forEach(x=>x.addEventListener('change',()=>{if(x.checked)document.querySelector('[data-region="full"]').checked=false;}));
+calculate();
+</script>
+</body></html>
