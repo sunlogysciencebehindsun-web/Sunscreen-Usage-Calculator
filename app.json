@@ -9,7 +9,12 @@
     "userInterfaceStyle": "light",
     "backgroundColor": "#f5f8fb",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sunlogy.usagecalculator",
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.sunlogy.usagecalculator",
